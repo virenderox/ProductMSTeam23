@@ -105,8 +105,8 @@ public class ProductControllerClass {
 	}
 	
 	//to update stock of the  product 
-	@RequestMapping(value = "/prodMS/updateStock", method = RequestMethod.POST)
-	public ResponseEntity<Boolean> updateMyStock(@RequestBody String prodId, @RequestBody Integer quantity){		
+	@RequestMapping(value = "/prodMS/updateStock/{prodId}/{quantity}", method = RequestMethod.PUT)
+	public ResponseEntity<Boolean> updateMyStock(@PathVariable String prodId, @PathVariable Integer quantity){		
 		try {
 			Boolean stat = productMyService.updateStockOfProd(prodId,quantity);
 			return new ResponseEntity<>(stat,HttpStatus.ACCEPTED);
